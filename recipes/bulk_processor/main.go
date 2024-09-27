@@ -7,8 +7,7 @@
 //
 // Example
 //
-//     bulk_processor -url=http://127.0.0.1:9200/bulk-processor-test?sniff=false -n=100000 -flush-interval=1s
-//
+//	bulk_processor -url=http://127.0.0.1:9200/bulk-processor-test?sniff=false -n=100000 -flush-interval=1s
 package main
 
 import (
@@ -25,8 +24,8 @@ import (
 
 	"github.com/google/uuid"
 
-	elastic "gopkg.in/olivere/elastic.v5"
-	"gopkg.in/olivere/elastic.v5/config"
+	elastic "github.com/carlosagil/elastic"
+	"github.com/carlosagil/elastic/config"
 )
 
 func main() {

@@ -10,7 +10,7 @@ import (
 	"net/url"
 	"strings"
 
-	"gopkg.in/olivere/elastic.v5/uritemplates"
+	"github.com/carlosagil/elastic/uritemplates"
 )
 
 // DeleteByQueryService deletes documents that match a query.

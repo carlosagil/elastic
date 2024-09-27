@@ -11,7 +11,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"gopkg.in/olivere/elastic.v5/uritemplates"
+	"github.com/carlosagil/elastic/uritemplates"
 )
 
 // BulkService allows for batching bulk requests and sending them to
@@ -271,44 +271,45 @@ func (s *BulkService) Do(ctx context.Context) (*BulkResponse, error) {
 // BulkResponse is a response to a bulk execution.
 //
 // Example:
-// {
-//   "took":3,
-//   "errors":false,
-//   "items":[{
-//     "index":{
-//       "_index":"index1",
-//       "_type":"tweet",
-//       "_id":"1",
-//       "_version":3,
-//       "status":201
-//     }
-//   },{
-//     "index":{
-//       "_index":"index2",
-//       "_type":"tweet",
-//       "_id":"2",
-//       "_version":3,
-//       "status":200
-//     }
-//   },{
-//     "delete":{
-//       "_index":"index1",
-//       "_type":"tweet",
-//       "_id":"1",
-//       "_version":4,
-//       "status":200,
-//       "found":true
-//     }
-//   },{
-//     "update":{
-//       "_index":"index2",
-//       "_type":"tweet",
-//       "_id":"2",
-//       "_version":4,
-//       "status":200
-//     }
-//   }]
-// }
+//
+//	{
+//	  "took":3,
+//	  "errors":false,
+//	  "items":[{
+//	    "index":{
+//	      "_index":"index1",
+//	      "_type":"tweet",
+//	      "_id":"1",
+//	      "_version":3,
+//	      "status":201
+//	    }
+//	  },{
+//	    "index":{
+//	      "_index":"index2",
+//	      "_type":"tweet",
+//	      "_id":"2",
+//	      "_version":3,
+//	      "status":200
+//	    }
+//	  },{
+//	    "delete":{
+//	      "_index":"index1",
+//	      "_type":"tweet",
+//	      "_id":"1",
+//	      "_version":4,
+//	      "status":200,
+//	      "found":true
+//	    }
+//	  },{
+//	    "update":{
+//	      "_index":"index2",
+//	      "_type":"tweet",
+//	      "_id":"2",
+//	      "_version":4,
+//	      "status":200
+//	    }
+//	  }]
+//	}
 type BulkResponse struct {
 	Took   int                            `json:"took,omitempty"`
 	Errors bool                           `json:"errors,omitempty"`

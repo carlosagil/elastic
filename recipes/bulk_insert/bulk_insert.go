@@ -14,13 +14,12 @@
 // See https://www.elastic.co/guide/en/elasticsearch/reference/5.2/docs-bulk.html
 // for details on the Bulk API in Elasticsearch.
 //
-// Example
+// # Example
 //
 // Bulk index 100.000 documents into the index "warehouse", type "product",
 // committing every set of 1.000 documents.
 //
-//     bulk_insert -index=warehouse -type=product -n=100000 -bulk-size=1000
-//
+//	bulk_insert -index=warehouse -type=product -n=100000 -bulk-size=1000
 package main
 
 import (
@@ -34,8 +33,8 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/carlosagil/elastic"
 	"golang.org/x/sync/errgroup"
-	"gopkg.in/olivere/elastic.v5"
 )
 
 func main() {
