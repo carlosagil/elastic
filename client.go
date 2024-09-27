@@ -21,12 +21,12 @@ import (
 
 	"github.com/pkg/errors"
 
-	"gopkg.in/olivere/elastic.v5/config"
+	"github.com/carlosagil/elastic/v5/config"
 )
 
 const (
 	// Version is the current version of Elastic.
-	Version = "5.0.86"
+	Version = "5.0.92"
 
 	// DefaultURL is the default endpoint of Elasticsearch on the local machine.
 	// It is used e.g. when initializing a new Client without a specific URL.
@@ -155,9 +155,9 @@ type Client struct {
 //
 // Example:
 //
-//   client, err := elastic.NewClient(
-//     elastic.SetURL("http://127.0.0.1:9200", "http://127.0.0.1:9201"),
-//     elastic.SetBasicAuth("user", "secret"))
+//	client, err := elastic.NewClient(
+//	  elastic.SetURL("http://127.0.0.1:9200", "http://127.0.0.1:9201"),
+//	  elastic.SetBasicAuth("user", "secret"))
 //
 // If no URL is configured, Elastic uses DefaultURL by default.
 //
@@ -1107,6 +1107,7 @@ func (c *Client) startupHealthcheck(timeout time.Duration) error {
 	// If we don't get a connection after "timeout", we bail.
 	var lastErr error
 	start := time.Now()
+	fmt.Printf("startupHealthcheck urls: %v\n", urls)
 	for {
 		for _, url := range urls {
 			req, err := http.NewRequest("HEAD", url, nil)
@@ -1119,10 +1120,12 @@ func (c *Client) startupHealthcheck(timeout time.Duration) error {
 			ctx, cancel := context.WithTimeout(req.Context(), timeout)
 			defer cancel()
 			req = req.WithContext(ctx)
+			fmt.Printf("startupHealthcheck Request: %v\n", req)
 			res, err := c.c.Do(req)
 			if err == nil && res != nil && res.StatusCode >= 200 && res.StatusCode < 300 {
 				return nil
 			} else if err != nil {
+				fmt.Printf("startupHealthcheck Error: %v\n", err)
 				lastErr = err
 			}
 		}

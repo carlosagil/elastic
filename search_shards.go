@@ -10,7 +10,7 @@ import (
 	"net/url"
 	"strings"
 
-	"gopkg.in/olivere/elastic.v5/uritemplates"
+	"github.com/carlosagil/elastic/v5/uritemplates"
 )
 
 // SearchShardsService returns the indices and shards that a search request would be executed against.
@@ -40,8 +40,8 @@ func (s *SearchShardsService) Index(index ...string) *SearchShardsService {
 	return s
 }
 
-//A boolean value whether to read the cluster state locally in order to
-//determine where shards are allocated instead of using the Master node’s cluster state.
+// A boolean value whether to read the cluster state locally in order to
+// determine where shards are allocated instead of using the Master node’s cluster state.
 func (s *SearchShardsService) Local(local bool) *SearchShardsService {
 	s.local = &local
 	return s
@@ -164,9 +164,9 @@ func (s *SearchShardsService) Do(ctx context.Context) (*SearchShardsResponse, er
 
 // SearchShardsResponse is the response of SearchShardsService.Do.
 type SearchShardsResponse struct {
-	Nodes   map[string]interface{} `json:"nodes"`
-	Indices map[string]interface{} `json:"indices"`
-	Shards  [][]*SearchShardsResponseShardsInfo         `json:"shards"`
+	Nodes   map[string]interface{}              `json:"nodes"`
+	Indices map[string]interface{}              `json:"indices"`
+	Shards  [][]*SearchShardsResponseShardsInfo `json:"shards"`
 }
 
 type SearchShardsResponseShardsInfo struct {

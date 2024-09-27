@@ -4,11 +4,9 @@
 
 // Connect simply connects to Elasticsearch.
 //
-// Example
+// # Example
 //
-//
-//     connect -url=http://127.0.0.1:9200 -sniff=false
-//
+//	connect -url=http://127.0.0.1:9200 -sniff=false
 package main
 
 import (
@@ -16,7 +14,7 @@ import (
 	"fmt"
 	"log"
 
-	"gopkg.in/olivere/elastic.v5"
+	"github.com/carlosagil/elastic/v5"
 )
 
 func main() {
